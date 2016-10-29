@@ -4,6 +4,7 @@
 
 import unittest
 
+from src.symbol import EPSILON
 from src.symbol import Symbol
 from src.symbol import SymbolType
 
@@ -19,8 +20,7 @@ class TestSymbol(unittest.TestCase):
         var = Symbol(SymbolType.variable, "FOO")
         self.assertEqual(var.type, SymbolType.variable)
 
-        eps = Symbol(SymbolType.epsilon)
-        self.assertEqual(eps.type, SymbolType.epsilon)
+        self.assertEqual(EPSILON.type, SymbolType.epsilon)
 
     def test_name(self):
         """Tests name property of Symbol."""
@@ -30,5 +30,4 @@ class TestSymbol(unittest.TestCase):
         expression = Symbol(SymbolType.variable, "EXPRESSION")
         self.assertEqual(expression.name, "EXPRESSION")
 
-        epsilon = Symbol(SymbolType.epsilon)
-        self.assertEqual(epsilon.name, None)
+        self.assertEqual(EPSILON.name, "EPSILON")
