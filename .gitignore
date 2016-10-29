@@ -1,2 +1,5 @@
 # Idea generated folder.
 .idea/
+
+# Compiled bytecode folder.
+__pycache__
