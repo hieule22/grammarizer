@@ -9,13 +9,13 @@ class SymbolType(Enum):
     """Type associated with a symbol."""
     variable = 0
     terminal = 1
-    epsilon = 2
+    epsilon = 2  # Reserved for the empty string symbol.
 
 
 class Symbol(object):
     """Representation of a symbol."""
 
-    def __init__(self, symtype, name=None):
+    def __init__(self, symtype, name):
         """Constructs a symbol from given type and name.
 
         Args:
@@ -27,10 +27,21 @@ class Symbol(object):
 
     @property
     def type(self):
-        """Returns read-only type of this symbol."""
+        """Gets the read-only type of this symbol.
+
+        Returns:
+            The type associated with this symbol.
+        """
         return self._symtype
 
     @property
     def name(self):
-        """Returns read-only name of this symbol."""
+        """Gets the read-only name of this symbol.
+
+        Returns:
+            The name associated with this symbol.
+        """
         return self._name
+
+# Constant symbol reserved for the empty string.
+EPSILON = Symbol(SymbolType.epsilon, "EPSILON")
