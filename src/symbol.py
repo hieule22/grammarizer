@@ -1,8 +1,8 @@
 # Copyright 2016 Hieu Le.
 
-from enum import Enum
+"""A symbol from a context-free grammar can be a variable, terminal or epsilon."""
 
-# A symbol from a context-free grammar can be a variable, terminal or epsilon.
+from enum import Enum
 
 
 class SymbolType(Enum):
