@@ -4,8 +4,8 @@
 
 import unittest
 
-from src.errors import Error
-from src.errors import GrammarError
+from core.errors import Error
+from core.errors import GrammarError
 
 
 class ErrorsTest(unittest.TestCase):

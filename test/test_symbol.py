@@ -4,9 +4,9 @@
 
 import unittest
 
-from src.symbol import EPSILON
-from src.symbol import Symbol
-from src.symbol import SymbolType
+from core.symbol import EPSILON
+from core.symbol import Symbol
+from core.symbol import SymbolType
 
 
 class SymbolTest(unittest.TestCase):

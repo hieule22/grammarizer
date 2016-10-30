@@ -4,8 +4,8 @@
 and non-terminals can be combined to form strings.
 """
 
-from src.errors import GrammarError
-from src.symbol import SymbolType
+from core.errors import GrammarError
+from core.symbol import SymbolType
 
 
 class Production(object):

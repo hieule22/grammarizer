@@ -4,10 +4,10 @@
 
 import unittest
 
-from src.errors import GrammarError
-from src.production import Production
-from src.symbol import Symbol
-from src.symbol import SymbolType
+from core.errors import GrammarError
+from core.production import Production
+from core.symbol import Symbol
+from core.symbol import SymbolType
 
 
 class ProductionTest(unittest.TestCase):
