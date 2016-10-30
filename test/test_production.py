@@ -32,3 +32,13 @@ class ProductionTest(unittest.TestCase):
 
         self.assertTrue("Production head must be a variable" in
                         context.exception.message)
+
+    def test_str(self):
+        """Tests debug string method."""
+        head = Symbol(SymbolType.variable, "FOO")
+        body = [Symbol(SymbolType.terminal, "bar"),
+                Symbol(SymbolType.terminal, "+"),
+                Symbol(SymbolType.terminal, "quoz")]
+        production = Production(head, body)
+
+        self.assertEqual(str(production), "FOO ::= bar + quoz")

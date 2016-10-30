@@ -57,3 +57,10 @@ class Production(object):
             A list of variables and terminals specifying the production body.
         """
         return self._body
+
+    def __str__(self):
+        """Generates a debug string for this production."""
+        debug_str = "%s ::=" % str(self.head)
+        for symbol in self.body:
+            debug_str += " %s" % str(symbol)
+        return debug_str

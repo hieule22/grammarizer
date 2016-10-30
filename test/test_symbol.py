@@ -53,3 +53,13 @@ class SymbolTest(unittest.TestCase):
         variables = {first: 0}
         self.assertTrue(second in variables)
         self.assertFalse(third in variables)
+
+    def test_str(self):
+        """Tests debug string method."""
+        terminal = Symbol(SymbolType.terminal, "foo")
+        self.assertEqual(str(terminal), "foo")
+
+        variable = Symbol(SymbolType.variable, "bar")
+        self.assertEqual(str(variable), "bar")
+
+        self.assertEqual(str(EPSILON), "EPSILON")

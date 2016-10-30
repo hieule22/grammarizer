@@ -56,5 +56,9 @@ class Symbol(object):
         hashcode = 23 * 31 + hash(self._symtype)
         return hashcode * 31 + hash(self._name)
 
+    def __str__(self):
+        """Generates a debug string for this symbol."""
+        return self.name
+
 # Constant symbol reserved for the empty string.
 EPSILON = Symbol(SymbolType.epsilon, "EPSILON")
