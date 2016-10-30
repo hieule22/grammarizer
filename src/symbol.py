@@ -43,5 +43,18 @@ class Symbol(object):
         """
         return self._name
 
+    def __eq__(self, other):
+        """Checks for symbol equivalence."""
+        return self.type == other.type and self.name == other.name
+
+    def __ne__(self, other):
+        """Checks for symbol inequality."""
+        return not self.__eq__(other)
+
+    def __hash__(self):
+        """Generates hashcode for this symbol."""
+        hashcode = 23 * 31 + hash(self._symtype)
+        return hashcode * 31 + hash(self._name)
+
 # Constant symbol reserved for the empty string.
 EPSILON = Symbol(SymbolType.epsilon, "EPSILON")

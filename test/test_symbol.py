@@ -9,8 +9,8 @@ from src.symbol import Symbol
 from src.symbol import SymbolType
 
 
-class TestSymbol(unittest.TestCase):
-    """Test class for Symbol"""
+class SymbolTest(unittest.TestCase):
+    """Test class for Symbol."""
 
     def test_type(self):
         """Tests type property of Symbol."""
@@ -31,3 +31,25 @@ class TestSymbol(unittest.TestCase):
         self.assertEqual(expression.name, "EXPRESSION")
 
         self.assertEqual(EPSILON.name, "EPSILON")
+
+    def test_equality(self):
+        """Tests equality checking."""
+        first = Symbol(SymbolType.variable, "TERM")
+        second = Symbol(SymbolType.variable, "TERM")
+        third = Symbol(SymbolType.variable, "BLOCK")
+        self.assertEqual(first, second)
+        self.assertNotEqual(first, third)
+
+    def test_hash(self):
+        """Tests hash function."""
+        first = Symbol(SymbolType.terminal, "BEGIN")
+        second = Symbol(SymbolType.terminal, "BEGIN")
+        third = Symbol(SymbolType.terminal, "NUMBER")
+
+        self.assertTrue(first == second and hash(first) == hash(second))
+
+        self.assertNotEqual(hash(first), hash(third))
+
+        variables = {first: 0}
+        self.assertTrue(second in variables)
+        self.assertFalse(third in variables)
