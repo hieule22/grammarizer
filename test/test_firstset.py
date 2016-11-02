@@ -77,7 +77,7 @@ class GenerateFirstSetsTest(unittest.TestCase):
         FORMAL_PARM_LIST = Symbol(SymbolType.VARIABLE, "FORMAL_PARM_LIST")
         FORMAL_PARM_LIST_HAT = Symbol(SymbolType.VARIABLE, "FORMAL_PARM_LIST_HAT")
         STMT_LIST = Symbol(SymbolType.VARIABLE, "STMT_LIST")
-        STMT_LIST_PRM = Symbol(SymbolType.VARIABLE, "DECL_LIST_PRM")
+        STMT_LIST_PRM = Symbol(SymbolType.VARIABLE, "STMT_LIST_PRM")
         STMT = Symbol(SymbolType.VARIABLE, "STMT")
         ASSIGNMENT_STMT = Symbol(SymbolType.VARIABLE, "ASSIGNMENT_STMT")
         IF_STMT = Symbol(SymbolType.VARIABLE, "IF_STMT")
@@ -135,7 +135,8 @@ class GenerateFirstSetsTest(unittest.TestCase):
             Production(IDENTIFIER_LIST, [identifier, IDENTIFIER_LIST_PRM]),
             Production(IDENTIFIER_LIST_PRM, [coma, identifier, IDENTIFIER_LIST_PRM]),
             Production(IDENTIFIER_LIST_PRM, [LAMBDA]),
-            Production(STANDARD_TYPE, [int, bool]),
+            Production(STANDARD_TYPE, [int]),
+            Production(STANDARD_TYPE, [bool]),
             Production(BLOCK, [begin, STMT_LIST, end]),
             Production(PROCEDURE_DECL, [procedure, identifier, openbracket, PROCEDURE_ARGS,
                                         closebracket, VARIABLE_DECL_LIST, BLOCK]),
