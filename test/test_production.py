@@ -15,10 +15,10 @@ class ProductionTest(unittest.TestCase):
 
     def test_accessors(self):
         """Test accessor methods of Production."""
-        head = Symbol(SymbolType.variable, "EXPRESSION")
-        body = [Symbol(SymbolType.variable, "EXPRESSION"),
-                Symbol(SymbolType.terminal, "+"),
-                Symbol(SymbolType.variable, "TERM")]
+        head = Symbol(SymbolType.VARIABLE, "EXPRESSION")
+        body = [Symbol(SymbolType.VARIABLE, "EXPRESSION"),
+                Symbol(SymbolType.TERMINAL, "+"),
+                Symbol(SymbolType.VARIABLE, "TERM")]
 
         prod = Production(head, body)
         self.assertEqual(prod.head, head)
@@ -26,7 +26,7 @@ class ProductionTest(unittest.TestCase):
 
     def test_error_construct(self):
         """Test exception raising from constructor."""
-        head = Symbol(SymbolType.terminal, "-")
+        head = Symbol(SymbolType.TERMINAL, "-")
         with self.assertRaises(GrammarError) as context:
             Production(head, [])
 
@@ -35,10 +35,10 @@ class ProductionTest(unittest.TestCase):
 
     def test_str(self):
         """Tests debug string method."""
-        head = Symbol(SymbolType.variable, "FOO")
-        body = [Symbol(SymbolType.terminal, "bar"),
-                Symbol(SymbolType.terminal, "+"),
-                Symbol(SymbolType.terminal, "quoz")]
+        head = Symbol(SymbolType.VARIABLE, "FOO")
+        body = [Symbol(SymbolType.TERMINAL, "bar"),
+                Symbol(SymbolType.TERMINAL, "+"),
+                Symbol(SymbolType.TERMINAL, "quoz")]
         production = Production(head, body)
 
         self.assertEqual(str(production), "FOO ::= bar + quoz")

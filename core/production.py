@@ -34,7 +34,7 @@ class Production(object):
         Raises:
             GrammarError: if head is not a variable.
         """
-        if head.type != SymbolType.variable:
+        if head.type != SymbolType.VARIABLE:
             raise GrammarError('Production head must be a variable: %s'
                                % head.name)
         self._head = head

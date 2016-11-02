@@ -7,9 +7,9 @@ from enum import Enum
 
 class SymbolType(Enum):
     """Type associated with a symbol."""
-    variable = 0
-    terminal = 1
-    epsilon = 2  # Reserved for the empty string symbol.
+    VARIABLE = 0
+    TERMINAL = 1
+    EPSILON = 2  # Reserved for the empty string symbol.
 
 
 class Symbol(object):
@@ -61,4 +61,4 @@ class Symbol(object):
         return self.name
 
 # Constant symbol reserved for the empty string.
-EPSILON = Symbol(SymbolType.epsilon, "EPSILON")
+LAMBDA = Symbol(SymbolType.EPSILON, "LAMBDA")

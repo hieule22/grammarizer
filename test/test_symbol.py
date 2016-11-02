@@ -4,7 +4,7 @@
 
 import unittest
 
-from core.symbol import EPSILON
+from core.symbol import LAMBDA
 from core.symbol import Symbol
 from core.symbol import SymbolType
 
@@ -14,37 +14,37 @@ class SymbolTest(unittest.TestCase):
 
     def test_type(self):
         """Tests type property of Symbol."""
-        term = Symbol(SymbolType.terminal, "FOO")
-        self.assertEqual(term.type, SymbolType.terminal)
+        term = Symbol(SymbolType.TERMINAL, "FOO")
+        self.assertEqual(term.type, SymbolType.TERMINAL)
 
-        var = Symbol(SymbolType.variable, "FOO")
-        self.assertEqual(var.type, SymbolType.variable)
+        var = Symbol(SymbolType.VARIABLE, "FOO")
+        self.assertEqual(var.type, SymbolType.VARIABLE)
 
-        self.assertEqual(EPSILON.type, SymbolType.epsilon)
+        self.assertEqual(LAMBDA.type, SymbolType.EPSILON)
 
     def test_name(self):
         """Tests name property of Symbol."""
-        identifier = Symbol(SymbolType.terminal, "IDENTIFIER")
+        identifier = Symbol(SymbolType.TERMINAL, "IDENTIFIER")
         self.assertEqual(identifier.name, "IDENTIFIER")
 
-        expression = Symbol(SymbolType.variable, "EXPRESSION")
+        expression = Symbol(SymbolType.VARIABLE, "EXPRESSION")
         self.assertEqual(expression.name, "EXPRESSION")
 
-        self.assertEqual(EPSILON.name, "EPSILON")
+        self.assertEqual(LAMBDA.name, "LAMBDA")
 
     def test_equality(self):
         """Tests equality checking."""
-        first = Symbol(SymbolType.variable, "TERM")
-        second = Symbol(SymbolType.variable, "TERM")
-        third = Symbol(SymbolType.variable, "BLOCK")
+        first = Symbol(SymbolType.VARIABLE, "TERM")
+        second = Symbol(SymbolType.VARIABLE, "TERM")
+        third = Symbol(SymbolType.VARIABLE, "BLOCK")
         self.assertEqual(first, second)
         self.assertNotEqual(first, third)
 
     def test_hash(self):
         """Tests hash function."""
-        first = Symbol(SymbolType.terminal, "BEGIN")
-        second = Symbol(SymbolType.terminal, "BEGIN")
-        third = Symbol(SymbolType.terminal, "NUMBER")
+        first = Symbol(SymbolType.TERMINAL, "BEGIN")
+        second = Symbol(SymbolType.TERMINAL, "BEGIN")
+        third = Symbol(SymbolType.TERMINAL, "NUMBER")
 
         self.assertTrue(first == second and hash(first) == hash(second))
 
@@ -56,10 +56,10 @@ class SymbolTest(unittest.TestCase):
 
     def test_str(self):
         """Tests debug string method."""
-        terminal = Symbol(SymbolType.terminal, "foo")
+        terminal = Symbol(SymbolType.TERMINAL, "foo")
         self.assertEqual(str(terminal), "foo")
 
-        variable = Symbol(SymbolType.variable, "bar")
+        variable = Symbol(SymbolType.VARIABLE, "bar")
         self.assertEqual(str(variable), "bar")
 
-        self.assertEqual(str(EPSILON), "EPSILON")
+        self.assertEqual(str(LAMBDA), "LAMBDA")
