@@ -3,3 +3,6 @@
 
 # Compiled bytecode folder.
 __pycache__
+
+# OS generated files.
+.DS_STORE
