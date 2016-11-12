@@ -14,14 +14,14 @@ from transformers.firstset import generate_first_sets
 class GenerateFirstSetsTest(unittest.TestCase):
     """Test class for generate_first_sets."""
 
-    def test_generate_first_sets(self):
-        """Test generate_first_sets() method."""
-        A = Symbol(SymbolType.VARIABLE, "A")
-        B = Symbol(SymbolType.VARIABLE, "B")
-        C = Symbol(SymbolType.VARIABLE, "C")
-        e = Symbol(SymbolType.TERMINAL, "e")
-        f = Symbol(SymbolType.TERMINAL, "f")
-        g = Symbol(SymbolType.TERMINAL, "g")
+    def test_generate_first_sets_basic(self):
+        """Test generate_first_sets() method on a simple grammar."""
+        A = Symbol(SymbolType.VARIABLE, 'A')
+        B = Symbol(SymbolType.VARIABLE, 'B')
+        C = Symbol(SymbolType.VARIABLE, 'C')
+        e = Symbol(SymbolType.TERMINAL, 'e')
+        f = Symbol(SymbolType.TERMINAL, 'f')
+        g = Symbol(SymbolType.TERMINAL, 'g')
 
         productions = [
             Production(A, [e, A]),
@@ -42,27 +42,30 @@ class GenerateFirstSetsTest(unittest.TestCase):
 
         self.assertTrue(len(first_sets) == 7)
 
-        # TODO(hieule): Fix failing test cases.
         # First(LAMBDA) = {LAMBDA}.
-        # self.assertTrue(LAMBDA in first_sets.keys())
-        # self.assertTrue(first_sets[LAMBDA] <= set([LAMBDA]))
-        # self.assertTrue(LAMBDA in first_sets[LAMBDA])
-        #
-        # # First(t) = {t} for all terminal t.
-        # for t in [e, f, g]:
-        #     self.assertTrue(t in first_sets.keys())
-        #     self.assertTrue(first_sets[t] == {t})
-        #
-        # self.assertTrue(A in first_sets.keys())
-        # self.assertTrue(first_sets[A] == {e, f, g})
-        #
-        # self.assertTrue(B in first_sets.keys())
-        # self.assertTrue(first_sets[B] == {LAMBDA, g})
-        #
-        # self.assertTrue(C in first_sets.keys())
-        # self.assertTrue(first_sets[C] == {g})
+        self.assertTrue(str(LAMBDA) in first_sets.keys())
+        self.assertTrue(first_sets[str(LAMBDA)] == {LAMBDA})
+        self.assertTrue(LAMBDA in first_sets[str(LAMBDA)])
+
+        self.assertTrue(C in first_sets.keys())
+
+        # First(t) = {t} for all terminal t.
+        for t in [e, f, g]:
+             print(str(t))
+             self.assertTrue(t in first_sets.keys())
+             self.assertTrue(first_sets[t] == {t})
+
+        self.assertTrue(A in first_sets.keys())
+        self.assertTrue(first_sets[A] == {e, f, g})
+
+        self.assertTrue(B in first_sets.keys())
+        self.assertTrue(first_sets[B] == {LAMBDA, g})
+
+        self.assertTrue(C in first_sets.keys())
+        self.assertTrue(first_sets[C] == {g})
 
     def test_generate_first_sets_advanced(self):
+        """Test generate_first_sets() method on a complex grammar."""
         PROGRAM = Symbol(SymbolType.VARIABLE, "PROGRAM")
         DECL_LIST = Symbol(SymbolType.VARIABLE, "DECL_LIST")
         VARIABLE_DECL_LIST = Symbol(SymbolType.VARIABLE, "VARIABLE_DECL_LIST")
